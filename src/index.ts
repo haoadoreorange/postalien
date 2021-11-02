@@ -102,6 +102,6 @@ const prompt = (rqs: Requests) => {
     };
 };
 
-export const postkid = (rqs: Requests): void => prompt(rqs)();
+export const postwoman = (rqs: Requests): void => prompt(rqs)();
 export { Requests } from "types/requests";
 export * from "lib/varnager";
