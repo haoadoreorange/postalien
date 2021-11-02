@@ -3,6 +3,7 @@
     "compilerOptions": {
         "outDir": "dist/" /* Redirect output structure to the directory. */,
         "lib": ["ES2020", "ES2021.String"],
-        "baseUrl": "src/" /* Base directory to resolve non-absolute module names. */
+        "baseUrl": "src/" /* Base directory to resolve non-absolute module names. */,
+        "plugins": [{ "transform": "@zerollup/ts-transform-paths" }]
     }
 }
