@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/lib/polyfill.ts"],"names":["String","prototype","replaceAll","str","new_str","Object","toString","call","toLowerCase","this","replace","RegExp"],"mappings":"oEAQKA,OAAOC,UAAUC,aAClBF,OAAOC,UAAUC,WAAa,SAAUC,EAAKC,GAEzC,MAA0D,oBAAtDC,OAAOJ,UAAUK,SAASC,KAAKJ,GAAKK,cAE7BC,KAAKC,QAAQP,EAAKC,GAKtBK,KAAKC,QAAQ,IAAIC,OAAOR,EAAK,KAAMC","file":"polyfill.js"}
