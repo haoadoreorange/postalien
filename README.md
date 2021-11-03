@@ -1,6 +1,15 @@
 # Lightweight programmable query CLI
 
-To add/remove requests, modify the `export default` object in the `src/requests` source code, heading there for some examples. Each sub-field act as a sub-level until you define the `Request` object.
+### Usage
+
+```typescript
+import { postwowan } from "postwoman";
+postwoman(request: Requests);
+```
+
+### `Requests` object
+
+Each sub-field act as a sub-level until you define the `Request` object.
 
 ```typescript
 Parent: {
@@ -37,7 +46,9 @@ Parent
    Request 2
 ```
 
-A `Request` object has 4 fields:
+### `Request` object
+
+has 4 fields:
 
 -   quiet?: _boolean_ print output of request to console.
 -   body?: _object literal_ the optional body for the request, so you can define the body of the request here instead of putting it directly in the `request` function, this helps if someone want to verify the body structure instead without needing to look into the request function source code. You can also use variable here using the syntax `{{variable}}`

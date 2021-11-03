@@ -20,7 +20,5 @@ exports.default = () => {
             }),
         )
         .pipe(tsProject());
-    return require(`merge-stream`)(
-        compiled_src.pipe(sourcemaps.write(`.`, { includeContent: false })).pipe(gulp.dest(`dist`)),
-    );
+    return compiled_src.pipe(sourcemaps.write(`.`, { includeContent: false })).pipe(gulp.dest(`dist`));
 };
