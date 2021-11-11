@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Postwoman test suite cli output 1`] = `
+"? Which request to make ? (Use arrow keys)
+  collection
+  === folder1
+❯     request1 
+  === folder2
+      request1 [15D[15C"
+`;
