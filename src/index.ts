@@ -42,6 +42,30 @@ const extractRequests = (() => {
     };
 })();
 
+const injectVariables = (body: Record<string, unknown>) => {
+    let str = JSON.stringify(body);
+    const matched = new Set();
+    // TODO: match 2 regex in 1 pass
+    for (const match of [...str.matchAll(/"{{(.*?)}}"/g)]) {
+        if (!matched.has(match[0])) {
+            matched.add(match[0]);
+            str = str.replaceAll(match[0], JSON.stringify(getVar(match[1])));
+        }
+    }
+    matched.clear();
+    for (const match of [...str.matchAll(/{{(.*?)}}/g)]) {
+        if (!matched.has(match[0])) {
+            matched.add(match[0]);
+            const variable = getVar(match[1]);
+            str = str.replaceAll(
+                match[0],
+                typeof variable === `string` ? variable : JSON.stringify(variable).replaceAll(`"`, `\\"`),
+            );
+        }
+    }
+    return JSON.parse(str) as Record<string, unknown>;
+};
+
 const prompt = (rqs: Requests) => {
     const prompt_name = `request`;
     const { choices, requests } = extractRequests(rqs);
@@ -51,30 +75,7 @@ const prompt = (rqs: Requests) => {
         message: `Which request to make ?`,
         choices,
     };
-
-    const injectVariables = (body: Record<string, unknown>) => {
-        let str = JSON.stringify(body);
-        const matched = new Set();
-        // TODO: match 2 regex in 1 pass
-        for (const match of [...str.matchAll(/"{{(.*?)}}"/g)]) {
-            if (!matched.has(match[0])) {
-                matched.add(match[0]);
-                str = str.replaceAll(match[0], JSON.stringify(getVar(match[1])));
-            }
-        }
-        matched.clear();
-        for (const match of [...str.matchAll(/{{(.*?)}}/g)]) {
-            if (!matched.has(match[0])) {
-                matched.add(match[0]);
-                const variable = getVar(match[1]);
-                str = str.replaceAll(
-                    match[0],
-                    typeof variable === `string` ? variable : JSON.stringify(variable).replaceAll(`"`, `\\"`),
-                );
-            }
-        }
-        return JSON.parse(str) as Record<string, unknown>;
-    };
+    const raw_body: Record<string, Record<string | number, unknown>> = {};
 
     return function f() {
         inquirer
@@ -82,7 +83,10 @@ const prompt = (rqs: Requests) => {
             .then(async (answers: { [prompt_name]: string }) => {
                 const request = requests[answers[prompt_name]];
                 if (request.body) {
-                    request.body = injectVariables(request.body);
+                    if (!raw_body[answers[prompt_name]])
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                        raw_body[answers[prompt_name]] = JSON.parse(JSON.stringify(request.body));
+                    request.body = injectVariables(raw_body[answers[prompt_name]]);
                 }
                 const result = await request.request(request.prequest ? await request.prequest() : null);
                 const stringified = JSON.stringify(result, null, 4);
