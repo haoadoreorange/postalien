@@ -42,6 +42,8 @@ const extractRequests = (() => {
     };
 })();
 
+// only export in dev mode for testing purpose
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const injectVariables = (body: Record<string, unknown>) => {
     let str = JSON.stringify(body);
     const matched = new Set();
@@ -109,3 +111,7 @@ const prompt = (rqs: Requests) => {
 export const postwoman = (rqs: Requests): void => prompt(rqs)();
 export { Requests } from "types/requests";
 export * from "lib/varnager";
+
+/* <DEV-ONLY> */
+export { injectVariables };
+/* </DEV-ONLY> */

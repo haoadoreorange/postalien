@@ -21,7 +21,7 @@
         "build": "rimraf dist && gulp",
         "lint": "eslint '**/*.{js,ts}' --quiet --fix",
         "lint-staged": "lint-staged",
-        "test": "jest"
+        "test": "yarn build && jest"
     },
     "lint-staged": {
         "*.{js,ts}": [
