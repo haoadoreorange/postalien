@@ -17,6 +17,7 @@ type DB = {
 let db: DB;
 try {
     db = JSON.parse(fs.readFileSync(`db.json`, `utf8`)) as DB;
+    if (!db.variables) db = { ...db, variables: {} };
 } catch (e) {
     if ((e as NodeJS.ErrnoException).code === `ENOENT`) {
         db = { variables: {} };
