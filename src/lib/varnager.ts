@@ -1,8 +1,8 @@
 import fs from "fs";
 
 type Variable =
-    | { [key: string | number | symbol]: Variable }
-    | { [key: string | number | symbol]: Variable }[]
+    | { [key: string | number]: Variable }
+    | { [key: string | number]: Variable }[]
     | number
     | number[]
     | string
