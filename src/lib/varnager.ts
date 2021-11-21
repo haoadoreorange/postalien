@@ -29,7 +29,7 @@ export const getVar = (key: string): Variable => {
     throw new Error(`Variable '${key}' does not exist`);
 };
 
-export const setVar = (key: string, value: unknown): void => {
-    db.variables[key] = value as Variable;
+export const setVar = (key: string, value: Variable): void => {
+    db.variables[key] = value;
     fs.writeFileSync(`db.json`, JSON.stringify(db, null, 4));
 };
