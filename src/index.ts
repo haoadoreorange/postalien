@@ -4,14 +4,17 @@ import { getVar } from "lib/varnager";
 import inquirer from "inquirer";
 import path from "path";
 import fs from "fs";
+import JSB from "json-bigint";
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const JSONbig = JSB({ useNativeBigInt: true });
 
-const ensureDirectoryExistence = (file_path: string) => {
+const ensureDirExist = (file_path: string) => {
     const dirname = path.dirname(file_path);
-    if (fs.existsSync(dirname)) {
-        return true;
+    if (!fs.existsSync(dirname)) {
+        ensureDirExist(dirname);
+        fs.mkdirSync(dirname);
     }
-    ensureDirectoryExistence(dirname);
-    fs.mkdirSync(dirname);
+    return file_path;
 };
 
 const extractRequests = (() => {
@@ -91,15 +94,15 @@ const prompt = (rqs: Requests) => {
                     request.body = injectVariables(raw_body[answers[prompt_name]]);
                 }
                 const result = await request.request(request.prequest ? await request.prequest() : null);
-                const stringified = JSON.stringify(result, null, 4);
+                const stringified = JSONbig.stringify(result, null, 4);
                 if (!request.quiet) {
                     console.log(`Result of query ${answers[prompt_name]}`);
                     console.log(stringified);
                 }
+                fs.writeFile(ensureDirExist(`results` + answers[prompt_name] + `.json`), stringified, () => {
+                    //empty
+                });
                 if (request.postquest) await request.postquest(result);
-                const file_path = `results` + answers[prompt_name] + `.json`;
-                ensureDirectoryExistence(file_path);
-                fs.writeFileSync(file_path, stringified);
             })
             .catch((e) => {
                 console.error(e);
