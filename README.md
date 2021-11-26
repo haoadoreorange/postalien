@@ -1,5 +1,8 @@
 # Lightweight programmable query CLI
 
+### Install
+`yarn add https://github.com/haoadoresorange/postwoman.git#postwoman-v0.8.0-gitpkg`
+
 ### Usage
 
 ```typescript
@@ -56,4 +59,4 @@ has 4 fields:
 -   request: the request function, return Promise, result of Promise will be passed to `postquest`
 -   postquest?: executed after request, return Promise, result of Promise will be ignored.
 
-The result of these 3 functions are chained one after another: `prequest` -> `request` -> `postquest`. Also, if you want to use the `body` in one of these 3 functions, make sure you use the `function()` syntax and not the arrow function, as it doesn't bind `this`. Nothing stop you from defining another data field than `body` then use it, but only `body` field support `{{variable}}`. To set or get variables in functions, use `setVar` and `getVar`, or set it manually in db.json
+The result of these 3 functions are chained one after another: `prequest` -> `request` -> `postquest`. Also, if you want to use the `body` in one of these 3 functions, make sure you use the `function()` syntax and not the arrow function, as it doesn't bind `this`. Nothing stop you from defining another data field than `body` then use it, but only `body` field support `{{variable}}`. To set or get variables in functions, use `setVar` and `getVar`, or set it manually in `db.json`
