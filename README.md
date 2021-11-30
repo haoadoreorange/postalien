@@ -2,6 +2,8 @@
 
 [![Build Status](https://app.travis-ci.com/haoadoresorange/postalien.svg?branch=main)](https://app.travis-ci.com/haoadoresorange/postalien)
 
+[![NPM](https://nodei.co/npm/postalien.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/postalien/)
+
 ### Usage
 
 ```typescript
