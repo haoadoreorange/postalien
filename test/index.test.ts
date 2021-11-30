@@ -1,6 +1,6 @@
 import { spawn } from "child_process";
 
-describe(`Postwoman test suite`, () => {
+describe(`postalien test suite`, () => {
     test(`injectVariables`, async () => {
         jest.mock(`lib/varnager`, () => ({
             setVar: () => {

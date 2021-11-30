@@ -1,12 +1,12 @@
-# Lightweight framework to create programmable query CLI
+# post-alien | Lightweight framework to create programmable query CLI
 
-[![Build Status](https://app.travis-ci.com/haoadoresorange/postwoman.svg?branch=main)](https://app.travis-ci.com/haoadoresorange/postwoman)
+[![Build Status](https://app.travis-ci.com/haoadoresorange/postalien.svg?branch=main)](https://app.travis-ci.com/haoadoresorange/postalien)
 
 ### Usage
 
 ```typescript
-import { postwowan } from "postwoman";
-postwoman(request: Requests);
+import { postwowan } from "postalien";
+postalien(request: Requests);
 ```
 
 ### `Requests` object

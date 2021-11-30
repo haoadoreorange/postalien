@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Postwoman test suite cli output 1`] = `
+exports[`postalien test suite cli output 1`] = `
 "? Which request to make ? (Use arrow keys)
   collection
   === folder1

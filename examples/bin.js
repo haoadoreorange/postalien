@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
-require(`../dist/index`).postwoman({
+require(`../dist/index`).postalien({
     collection: {
         folder1: {
             request1: {
