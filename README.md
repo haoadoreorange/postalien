@@ -1,7 +1,6 @@
-# Lightweight programmable query CLI
+# Lightweight framework to create programmable query CLI
 
-### Install
-`yarn add https://github.com/haoadoresorange/postwoman.git#postwoman-v0.8.0-gitpkg`
+[![Build Status](https://app.travis-ci.com/haoadoresorange/postwoman.svg?branch=main)](https://app.travis-ci.com/haoadoresorange/postwoman)
 
 ### Usage
 
