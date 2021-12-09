@@ -5820,10 +5820,10 @@ whatwg-url@^8.0.0, whatwg-url@^8.5.0:
     tr46 "^2.1.0"
     webidl-conversions "^6.1.0"
 
-when-json-met-bigint@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/when-json-met-bigint/-/when-json-met-bigint-0.15.0.tgz#7488d9ee9e0be04d80650ead5c34744ad59d4231"
-  integrity sha512-ZAAj9lWwVnY0zfc05JEHRb/o3KUka9iVhVyL9mnbCsJnp4NlK1O7rxsePALISnN8uVBsvcxcRc7+JuGQjHKIPg==
+when-json-met-bigint@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/when-json-met-bigint/-/when-json-met-bigint-0.16.0.tgz#fe2667e83c43d731db4c30afc52a4f13fddfa07f"
+  integrity sha512-H2CMGI6RBKe0KE6kYCRHvN11fg+6ftt9zwqt8TEnLVhxr2TmhLTDM7wzC86XbcRt+6AZgwILYDR5swrlWudRHA==
 
 which-module@^1.0.0:
   version "1.0.0"
