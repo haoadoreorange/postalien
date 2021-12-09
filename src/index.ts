@@ -4,9 +4,7 @@ import { getVar } from "lib/varnager";
 import inquirer from "inquirer";
 import path from "path";
 import fs from "fs";
-import JSB from "json-bigint";
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const JSONbig = JSB({ useNativeBigInt: true });
+import { JSONB } from "when-json-met-bigint";
 
 const ensureDirExist = (file_path: string) => {
     const dirname = path.dirname(file_path);
@@ -94,7 +92,7 @@ const prompt = (rqs: Requests) => {
                     request.body = injectVariables(raw_body[answers[prompt_name]]);
                 }
                 const result = await request.request(request.prequest ? await request.prequest() : null);
-                const stringified = JSONbig.stringify(result, null, 4);
+                const stringified = JSONB.stringify(result, null, 4);
                 if (!request.quiet) {
                     console.log(`Result of query ${answers[prompt_name]}`);
                     console.log(stringified);

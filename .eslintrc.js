@@ -42,7 +42,7 @@ module.exports = {
         // See https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21
         `plugin:prettier/recommended`,
     ],
-    ignorePatterns: [`!.prettierrc.js`],
+    ignorePatterns: [`!.prettierrc.js`, `examples/`],
     rules: {
         quotes: [`error`, `backtick`],
         "prefer-const": [`error`],
@@ -132,6 +132,12 @@ module.exports = {
                 selector: VARIABLE,
                 types: func,
                 format: camelCase,
+            },
+            {
+                selector: VARIABLE,
+                types: func,
+                modifiers: [`destructured`],
+                format: [...camelCase, ...PascalCase],
             },
             {
                 selector: METHOD,

@@ -7,7 +7,7 @@
 ### Usage
 
 ```typescript
-import { postwowan } from "postalien";
+import { postwowan, setVar, getVar } from "postalien";
 postalien(request: Requests);
 ```
 
