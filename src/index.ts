@@ -62,7 +62,9 @@ const injectVariables = (body: Record<string, unknown>) => {
             const variable = getVar(match[1]);
             str = str.replaceAll(
                 match[0],
-                typeof variable === `string` ? variable : JSON.stringify(variable).replaceAll(`"`, `\\"`),
+                typeof variable === `string`
+                    ? variable
+                    : JSON.stringify(variable).replaceAll(`"`, `\\"`),
             );
         }
     }
@@ -91,15 +93,21 @@ const prompt = (rqs: Requests) => {
                         raw_body[answers[prompt_name]] = JSON.parse(JSON.stringify(request.body));
                     request.body = injectVariables(raw_body[answers[prompt_name]]);
                 }
-                const result = await request.request(request.prequest ? await request.prequest() : null);
+                const result = await request.request(
+                    request.prequest ? await request.prequest() : null,
+                );
                 const stringified = JSONB.stringify(result, null, 4);
                 if (!request.quiet) {
                     console.log(`Result of query ${answers[prompt_name]}`);
                     console.log(stringified);
                 }
-                fs.writeFile(ensureDirExist(`results` + answers[prompt_name] + `.json`), stringified, () => {
-                    //empty
-                });
+                fs.writeFile(
+                    ensureDirExist(`results` + answers[prompt_name] + `.json`),
+                    stringified,
+                    () => {
+                        //empty
+                    },
+                );
                 if (request.postquest) await request.postquest(result);
             })
             .catch((e) => {
