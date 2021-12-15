@@ -44,7 +44,7 @@
     },
     "dependencies": {
         "inquirer": "^8.2.0",
-        "when-json-met-bigint": "^0.21.0"
+        "when-json-met-bigint": "^0.26.0"
     },
     "devDependencies": {
         "@tsconfig/node14": "^1.0.1",
